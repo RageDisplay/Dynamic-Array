@@ -1,12 +1,11 @@
-import java.util.Arrays;
-
-public class MyVector<T> {
+public class MyVector<T> 
+{
     private int ArrLen;
     private int num = 9;
     private int count = 0;
     private Object[] Array;
 
-    MyVector() {}
+    MyVector(){}
 
     MyVector(int ArrLen) 
     {
@@ -31,7 +30,7 @@ public class MyVector<T> {
         Array = newArray;
     }
 
-    public void get(int index) 
+    public void printElement(int index) 
     {
         var element = Array[index];
         System.out.println(element+"\n");
@@ -46,7 +45,7 @@ public class MyVector<T> {
         Array[count++] = element;
     }
 
-    public void rmElement(int index) 
+    public void rmElementByIndex(int index) 
     {
         try
         {
@@ -79,7 +78,7 @@ public class MyVector<T> {
         }
     }
 
-    public void addIndex(T element, int index) 
+    public void addByIndex(T element, int index) 
     {
         if (count == Array.length - 1) 
         {
@@ -93,13 +92,14 @@ public class MyVector<T> {
                 throw new java.lang.ArrayIndexOutOfBoundsException();
             }
 
-            var CopyArray = Arrays.copyOfRange(Array, 0, index - 1);
-            Array[index] = element;
-            Array[count++] = element;
-            for (int i = 0; i < CopyArray.length; i++) 
-            {
-                Array[index + 1 + i] = CopyArray[i];
-            }
+            for (int i = count - 1; i >= index; i--)   
+            {   
+                Array[i + 1] = Array[i];   
+            }   
+
+            Array[index] = element;   
+            count++;   
+   
         }
 
         catch (ArrayIndexOutOfBoundsException e) 
@@ -115,6 +115,7 @@ public class MyVector<T> {
             Array[i] = null;
         }
         count = 0;
+        
         if (Array.length > ArrLen && count < Array.length / num) 
         {
             SetSize(Array.length / 3);
