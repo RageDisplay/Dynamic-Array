@@ -6,7 +6,7 @@ public class TestVector
         test.ArrWeight(24); //задан начальный размер массива
         test.addElement(7); //добавить элементы
         test.addElement(4.5);
-        test.addElement("Chainsow");
+        test.addElement("Chain");
         test.addElement(-99);
         test.addElement("Man");
         test.printArray(); //вывод массива
